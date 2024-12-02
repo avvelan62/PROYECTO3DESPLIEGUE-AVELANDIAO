@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Heladería Angie</title>
+</head>
+
+<body>
+    <header>
+        <h1>Bienvenido a Heladería Angie</h1>
+    </header>
+    <nav>
+        <a href="../heladeria">Inicio</a>
+        <a href="productos">Productos</a>
+        <a href="ingredientes">Ingredientes</a>
+    </nav>
+    <div class="contenedor">
+        <h1>Ingredientes</h1>
+        <h2>Base</h2>
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Nombre</th>
+                    <th>Precio</th>
+                    <th>Calorías</th>
+                    <th>Inventario</th>
+                    <th>Es vegetariano</th>
+                    <th>Sabor</th>
+                    <th>Es sano</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for ingrediente in lista_ingredientes[0] %}
+                <tr>
+                    <td>{{ ingrediente.id }}</td>
+                    <td>{{ ingrediente.nombre }}</td>
+                    <td>{{ ingrediente.precio }}</td>
+                    <td>{{ ingrediente.calorias }}</td>
+                    <td>{{ ingrediente.inventario }}</td>
+                    <td>{{ ingrediente.es_vegetariano }}</td>
+                    <td>{{ ingrediente.sabor }}</td>
+                    <td>{{ ingrediente.es_sano }}</td>
+                    <td>
+                        <form action="{{ url_for('heladeria_bp.abastecer_ingrediente') }}" method="POST">
+                            <input type="hidden" name="ingrediente_id" value="{{ ingrediente.id }}">
+                            <button type="submit">Abastecer</button>
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <h2>Complemento</h2>
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Nombre</th>
+                    <th>Precio</th>
+                    <th>Calorías</th>
+                    <th>Inventario</th>
+                    <th>Es vegetariano</th>
+                    <th>Es sano</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for ingrediente in lista_ingredientes[1] %}
+                <tr>
+                    <td>{{ ingrediente.id }}</td>
+                    <td>{{ ingrediente.nombre }}</td>
+                    <td>{{ ingrediente.precio }}</td>
+                    <td>{{ ingrediente.calorias }}</td>
+                    <td>{{ ingrediente.inventario }}</td>
+                    <td>{{ ingrediente.es_vegetariano }}</td>
+                    <td>{{ ingrediente.es_sano }}</td>
+                    <td>
+                        <form action="{{ url_for('heladeria_bp.abastecer_ingrediente') }}" method="POST">
+                            <input type="hidden" name="ingrediente_id" value="{{ ingrediente.id }}">
+                            <button type="submit">Abastecer</button>
+                        </form>
+                    </td>
+                    <td>
+                        <form action="{{ url_for('heladeria_bp.renovar_inventario') }}" method="POST">
+                            <input type="hidden" name="ingrediente_id" value="{{ ingrediente.id }}">
+                            <button type="submit">Renovar</button>
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

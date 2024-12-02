@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Heladería Angie</title>
+</head>
+
+<body>
+    <header>
+        <h1>Bienvenido a Heladería Angie</h1>
+    </header>
+    <nav>
+        <a href="../heladeria">Inicio</a>
+        <a href="productos">Productos</a>
+        <a href="ingredientes">Ingredientes</a>
+    </nav>
+    <div class="contenedor">
+        <h1>Productos</h1>
+        <div>
+            <div class="produto_rentable">
+                <h2 class="producto_rentable_h2">Producto mas rentable: </h2>
+                <h3 class="producto_rentable_h3">{{producto_mas_rentable}}</h3>
+            </div>
+            <h2>Copa</h2>
+            <table border="1">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Nombre</th>
+                        <th>Precio</th>
+                        <th>Tipo vaso</th>
+                        <th>Ingredientes</th>
+                        <th>Calorías</th>
+                        <th>Costo producción</th>
+                        <th>Rentabilidad</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for producto in lista_productos[0] %}
+                    <tr>
+                        <td>{{ producto.id }}</td>
+                        <td>{{ producto.nombre }}</td>
+                        <td>{{ producto.precio }}</td>
+                        <td>{{ producto.tipo_vaso }}</td>
+                        <td>{{ producto.ingrediente_1.nombre }} - {{ producto.ingrediente_2.nombre }} - {{
+                            producto.ingrediente_3.nombre }}
+                        </td>
+                        <td>{{ producto.calorias }}</td>
+                        <td>{{ producto.costo_produccion }}</td>
+                        <td>{{ producto.rentabilidad }}</td>
+                        <td>
+                            <form action="{{ url_for('heladeria_bp.productos') }}" method="POST">
+                                <input type="hidden" name="producto_id" value="{{ producto.id }}">
+                                <button type="submit">Inventario</button>
+                            </form>
+                        </td>
+                        <td>
+                            <form action="{{ url_for('heladeria_bp.vender_producto') }}" method="POST">
+                                <input type="hidden" name="producto_id" value="{{ producto.id }}">
+                                <button type="submit">Vender</button>
+                            </form>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <h2>Malteada</h2>
+            <table border="1">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Nombre</th>
+                        <th>Precio</th>
+                        <th>Volumen onzas</th>
+                        <th>Ingredientes</th>
+                        <th>Calorías</th>
+                        <th>Costo producción</th>
+                        <th>Rentabilidad</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for producto in lista_productos[1] %}
+                    <tr>
+                        <td>{{ producto.id }}</td>
+                        <td>{{ producto.nombre }}</td>
+                        <td>{{ producto.precio }}</td>
+                        <td>{{ producto.volumen_onzas }}</td>
+                        <td>{{ producto.ingrediente_1.nombre }} - {{ producto.ingrediente_2.nombre }} - {{
+                            producto.ingrediente_3.nombre }}
+                        </td>
+                        <td>{{ producto.calorias }}</td>
+                        <td>{{ producto.costo_produccion }}</td>
+                        <td>{{ producto.rentabilidad }}</td>
+                        <td>
+                            <form action="{{ url_for('heladeria_bp.productos') }}" method="POST">
+                                <input type="hidden" name="producto_id" value="{{ producto.id }}">
+                                <button type="submit">Inventario</button>
+                            </form>
+                        </td>
+                        <td>
+                            <form action="{{ url_for('heladeria_bp.vender_producto') }}" method="POST">
+                                <input type="hidden" name="producto_id" value="{{ producto.id }}">
+                                <button type="submit">Vender</button>
+                            </form>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <div>
+                <h2>Cantidad disponible de ingredientes de producto</h2>
+                <label>Nombre: </label> {{ingredientes_disponibles.ingrediente_1.nombre}}<br>
+                <label>Cantidad: </label> {{ingredientes_disponibles.ingrediente_1.inventario}}<br><br>
+
+                <label>Nombre: </label> {{ingredientes_disponibles.ingrediente_2.nombre}}<br>
+                <label>Cantidad: </label> {{ingredientes_disponibles.ingrediente_2.inventario}}<br><br>
+
+                <label>Nombre: </label> {{ingredientes_disponibles.ingrediente_3.nombre}}<br>
+                <label>Cantidad: </label> {{ingredientes_disponibles.ingrediente_3.inventario}}<br><br>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

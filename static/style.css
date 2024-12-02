@@ -1,0 +1,76 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #6fa3f9;
+    padding: 5px;
+    color: white;
+    text-align: center;
+}
+
+nav {
+    background-color: #333;
+    padding: 10px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin: 5px;
+    padding: 5px;
+    display: inline-block;
+}
+
+nav a:hover {
+    background-color: #575757;
+}
+
+.container {
+    margin: 20px;
+}
+
+h1 {
+    color: #333;
+}
+
+.menu-options {
+    margin-top: 20px;
+}
+
+.menu-options li {
+    margin-bottom: 10px;
+}
+
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding-bottom: 8px;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    height: 20px;
+    font-size: 10px;
+}
+
+div{
+    padding-left: 20px;
+}
+
+.produto_rentable{
+    display: flex;
+    align-items: center;
+    padding-left: -50px;
+}
+
+.producto_rentable_h3{
+    padding-left: 50px;
+}
+
+.producto_rentable_h2{
+    padding-left: 0px;
+}
