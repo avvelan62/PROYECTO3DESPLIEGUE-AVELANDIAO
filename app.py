@@ -17,7 +17,7 @@ app.config["SQLACHEMY_TRACK_MODIFICATIONS"] = False
 
 login_manager = LoginManager(app)
 db.init_app(app)
-init_db(app) # Comentar para entorno de producción
+#init_db(app) # Comentar para entorno de producción
 load_models(app)
 
 app.register_blueprint(heladeria_blueprint)

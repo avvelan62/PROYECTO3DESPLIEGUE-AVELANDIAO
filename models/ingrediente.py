@@ -26,9 +26,9 @@ class Ingrediente(db.Model):
         """Abastece el ingrediente indicado
         """
         if self.tipo == "Base":
-            self.inventario += Decimal(5)
+            self.inventario += float(5)
         if self.tipo == "Complemento":
-           self.inventario += Decimal(10)
+           self.inventario += float(10)
         db.session.commit()
                   
     def renovar_inventario(self) -> None:

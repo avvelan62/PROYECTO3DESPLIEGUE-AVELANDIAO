@@ -25,7 +25,7 @@ def calcular_calorias_producto(lista_calorias_ingrediente: list) -> float:
     Returns:
         float: Resultado de calorías por producto
     """
-    cantidad_calorias = round(sum(lista_calorias_ingrediente) * Decimal(0.95), 2)
+    cantidad_calorias = round(sum(lista_calorias_ingrediente) * float(0.95), 2)
     return cantidad_calorias
 
 

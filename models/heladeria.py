@@ -31,9 +31,9 @@ class Heladeria():
                     # Si todos los ingredientes tienen inventario suficiente, se resta inventario y actualiza ventas
                     for ingrediente in [producto.ingrediente_1, producto.ingrediente_2, producto.ingrediente_3]:
                         if ingrediente.tipo == "Complemento":
-                            ingrediente.inventario -= Decimal(1)
+                            ingrediente.inventario -= float(1)
                         elif ingrediente.tipo == "Base":
-                            ingrediente.inventario -= Decimal(0.2)
+                            ingrediente.inventario -= float(0.2)
 
                     db.session.commit()
                     
