@@ -8,7 +8,6 @@ from controllers.heladeria_api_controller import heladeria_api_blueprint
 from models.users import Users
 import os
 
-print(f'mysql+pymysql://{os.getenv('DB_USERNAME')}:{os.getenv('DB_PASSWORD')}@{os.getenv('DB_HOST')}:{os.getenv('DB_PORT')}/{os.getenv('DB_NAME')}')
 load_dotenv(override=True)
 app = Flask(__name__, template_folder="views")
 secret_key = os.urandom(24)
